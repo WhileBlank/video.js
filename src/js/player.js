@@ -800,6 +800,9 @@ class Player extends Component {
       this.unloadTech_();
     }
 
+    // WhileBlank
+    const fitMode = document.defaultView.getComputedStyle(this.tag, null)['object-fit'];
+
     // get rid of the HTML5 video tag as soon as we are using another tech
     if (techName !== 'Html5' && this.tag) {
       Tech.getTech('Html5').disposeMediaElement(this.tag);
@@ -856,6 +859,10 @@ class Player extends Component {
       TechComponent = Component.getComponent(techName);
     }
     this.tech_ = new TechComponent(techOptions);
+
+    if (this.tech_.setStretching) {
+      this.techCall_('stretching', fitMode === 'fill');
+    }
 
     // player.triggerReady is always async, so don't need this to be async
     this.tech_.ready(Fn.bind(this, this.handleTechReady_), true);

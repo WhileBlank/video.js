@@ -307,7 +307,7 @@ var _log = _dereq_(86);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -604,7 +604,7 @@ var ClickableComponent = function (_Component) {
 _component2['default'].registerComponent('ClickableComponent', ClickableComponent);
 exports['default'] = ClickableComponent;
 
-},{"5":5,"81":81,"82":82,"83":83,"86":86,"88":88,"94":94}],4:[function(_dereq_,module,exports){
+},{"5":5,"81":81,"82":82,"83":83,"86":86,"88":88,"96":96}],4:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -708,7 +708,7 @@ exports['default'] = CloseButton;
 
 exports.__esModule = true;
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -2531,7 +2531,7 @@ var Component = function () {
 Component.registerComponent('Component', Component);
 exports['default'] = Component;
 
-},{"81":81,"82":82,"83":83,"85":85,"86":86,"87":87,"91":91,"95":95}],6:[function(_dereq_,module,exports){
+},{"81":81,"82":82,"83":83,"85":85,"86":86,"87":87,"91":91,"97":97}],6:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -5728,11 +5728,11 @@ var _fn = _dereq_(83);
 
 var Fn = _interopRequireWildcard(_fn);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -5878,7 +5878,7 @@ var TextTrackMenuItem = function (_MenuItem) {
 _component2['default'].registerComponent('TextTrackMenuItem', TextTrackMenuItem);
 exports['default'] = TextTrackMenuItem;
 
-},{"48":48,"5":5,"83":83,"94":94,"95":95}],32:[function(_dereq_,module,exports){
+},{"48":48,"5":5,"83":83,"96":96,"97":97}],32:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -7313,7 +7313,7 @@ exports['default'] = extendFn;
 
 exports.__esModule = true;
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -7365,7 +7365,7 @@ if (browserApi) {
 
 exports['default'] = FullscreenApi;
 
-},{"94":94}],45:[function(_dereq_,module,exports){
+},{"96":96}],45:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -8833,11 +8833,11 @@ var _component = _dereq_(5);
 
 var _component2 = _interopRequireDefault(_component);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -8885,7 +8885,7 @@ var _mediaError = _dereq_(46);
 
 var _mediaError2 = _interopRequireDefault(_mediaError);
 
-var _tuple = _dereq_(97);
+var _tuple = _dereq_(100);
 
 var _tuple2 = _interopRequireDefault(_tuple);
 
@@ -9726,6 +9726,9 @@ var Player = function (_Component) {
       this.unloadTech_();
     }
 
+    // WhileBlank
+    var fitMode = _document2['default'].defaultView.getComputedStyle(this.tag, null)['object-fit'];
+
     // get rid of the HTML5 video tag as soon as we are using another tech
     if (techName !== 'Html5' && this.tag) {
       _tech2['default'].getTech('Html5').disposeMediaElement(this.tag);
@@ -9782,6 +9785,10 @@ var Player = function (_Component) {
       TechComponent = _component2['default'].getComponent(techName);
     }
     this.tech_ = new TechComponent(techOptions);
+
+    if (this.tech_.setStretching) {
+      this.techCall_('stretching', fitMode === 'fill');
+    }
 
     // player.triggerReady is always async, so don't need this to be async
     this.tech_.ready(Fn.bind(this, this.handleTechReady_), true);
@@ -12461,7 +12468,7 @@ TECH_EVENTS_RETRIGGER.forEach(function (event) {
 _component2['default'].registerComponent('Player', Player);
 exports['default'] = Player;
 
-},{"1":1,"4":4,"41":41,"44":44,"45":45,"46":46,"5":5,"50":50,"55":55,"59":59,"60":60,"61":61,"62":62,"63":63,"68":68,"69":69,"71":71,"76":76,"78":78,"79":79,"8":8,"81":81,"82":82,"83":83,"85":85,"86":86,"87":87,"88":88,"89":89,"90":90,"91":91,"94":94,"95":95,"97":97}],52:[function(_dereq_,module,exports){
+},{"1":1,"100":100,"4":4,"41":41,"44":44,"45":45,"46":46,"5":5,"50":50,"55":55,"59":59,"60":60,"61":61,"62":62,"63":63,"68":68,"69":69,"71":71,"76":76,"78":78,"79":79,"8":8,"81":81,"82":82,"83":83,"85":85,"86":86,"87":87,"88":88,"89":89,"90":90,"91":91,"96":96,"97":97}],52:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -12910,11 +12917,11 @@ var _events = _dereq_(82);
 
 var Events = _interopRequireWildcard(_events);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -13042,7 +13049,7 @@ exports.autoSetup = autoSetup;
 exports.autoSetupTimeout = autoSetupTimeout;
 exports.hasLoaded = hasLoaded;
 
-},{"81":81,"82":82,"94":94,"95":95}],57:[function(_dereq_,module,exports){
+},{"81":81,"82":82,"96":96,"97":97}],57:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -13628,7 +13635,7 @@ var _component = _dereq_(5);
 
 var _component2 = _interopRequireDefault(_component);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -13791,6 +13798,31 @@ var Flash = function (_Tech) {
 
   Flash.prototype.pause = function pause() {
     this.el_.vjs_pause();
+  };
+
+  /**
+   * WhileBlank
+   */
+
+
+  Flash.prototype.stretching = function stretching(val) {
+    if (val === undefined) {
+      return this.currentStretching();
+    }
+
+    // Setting src through `val` not `setStretching` will be deprecated
+    return this.setStretching(val);
+  };
+
+  Flash.prototype.currentStretching = function currentStretching() {
+    if (this.currentSource_) {
+      return this.currentSource_.stretching;
+    }
+    return this.el_.vjs_getProperty('stretching');
+  };
+
+  Flash.prototype.setStretching = function setStretching(val) {
+    this.el_.vjs_setProperty('stretching', val);
   };
 
   /**
@@ -14760,7 +14792,7 @@ _component2['default'].registerComponent('Flash', Flash);
 _tech2['default'].registerTech('Flash', Flash);
 exports['default'] = Flash;
 
-},{"5":5,"58":58,"62":62,"81":81,"88":88,"90":90,"92":92,"95":95}],60:[function(_dereq_,module,exports){
+},{"5":5,"58":58,"62":62,"81":81,"88":88,"90":90,"92":92,"97":97}],60:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -14791,7 +14823,7 @@ var _log = _dereq_(86);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _tsml = _dereq_(98);
+var _tsml = _dereq_(102);
 
 var _tsml2 = _interopRequireDefault(_tsml);
 
@@ -14799,11 +14831,11 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -16515,7 +16547,7 @@ _component2['default'].registerComponent('Html5', Html5);
 _tech2['default'].registerTech('Html5', Html5);
 exports['default'] = Html5;
 
-},{"5":5,"62":62,"78":78,"81":81,"83":83,"86":86,"87":87,"88":88,"91":91,"92":92,"94":94,"95":95,"98":98}],61:[function(_dereq_,module,exports){
+},{"102":102,"5":5,"62":62,"78":78,"81":81,"83":83,"86":86,"87":87,"88":88,"91":91,"92":92,"96":96,"97":97}],61:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -16658,11 +16690,11 @@ var _mediaError = _dereq_(46);
 
 var _mediaError2 = _interopRequireDefault(_mediaError);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -17257,7 +17289,7 @@ var Tech = function (_Component) {
     // signals that the Tech is ready at which point Tech.el_ is part of the DOM
     // before inserting the WebVTT script
     if (_document2['default'].body.contains(this.el())) {
-      var vtt = _dereq_(105);
+      var vtt = _dereq_(103);
 
       // load via require if available and vtt.js script location was not passed in
       // as an option. novtt builds will turn the above require call into an empty object
@@ -17987,7 +18019,7 @@ _component2['default'].registerComponent('MediaTechController', Tech);
 Tech.registerTech('Tech', Tech);
 exports['default'] = Tech;
 
-},{"105":105,"46":46,"5":5,"63":63,"65":65,"66":66,"70":70,"72":72,"76":76,"79":79,"83":83,"86":86,"87":87,"88":88,"90":90,"94":94,"95":95}],63:[function(_dereq_,module,exports){
+},{"103":103,"46":46,"5":5,"63":63,"65":65,"66":66,"70":70,"72":72,"76":76,"79":79,"83":83,"86":86,"87":87,"88":88,"90":90,"96":96,"97":97}],63:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18000,7 +18032,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -18170,7 +18202,7 @@ var AudioTrackList = function (_TrackList) {
 
 exports['default'] = AudioTrackList;
 
-},{"74":74,"78":78,"94":94}],64:[function(_dereq_,module,exports){
+},{"74":74,"78":78,"96":96}],64:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18310,7 +18342,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -18451,7 +18483,7 @@ var HtmlTrackElementList = function () {
 
 exports['default'] = HtmlTrackElementList;
 
-},{"78":78,"94":94}],66:[function(_dereq_,module,exports){
+},{"78":78,"96":96}],66:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18460,7 +18492,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -18622,7 +18654,7 @@ HTMLTrackElement.ERROR = ERROR;
 
 exports['default'] = HTMLTrackElement;
 
-},{"42":42,"72":72,"78":78,"94":94}],67:[function(_dereq_,module,exports){
+},{"42":42,"72":72,"78":78,"96":96}],67:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18631,7 +18663,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -18776,7 +18808,7 @@ var TextTrackCueList = function () {
 
 exports['default'] = TextTrackCueList;
 
-},{"78":78,"94":94}],68:[function(_dereq_,module,exports){
+},{"78":78,"96":96}],68:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -18789,7 +18821,7 @@ var _fn = _dereq_(83);
 
 var Fn = _interopRequireWildcard(_fn);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -19128,7 +19160,7 @@ var TextTrackDisplay = function (_Component) {
 _component2['default'].registerComponent('TextTrackDisplay', TextTrackDisplay);
 exports['default'] = TextTrackDisplay;
 
-},{"5":5,"83":83,"95":95}],69:[function(_dereq_,module,exports){
+},{"5":5,"83":83,"97":97}],69:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -19249,7 +19281,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -19338,12 +19370,12 @@ var TextTrackList = function (_TrackList) {
 
 exports['default'] = TextTrackList;
 
-},{"74":74,"78":78,"83":83,"94":94}],71:[function(_dereq_,module,exports){
+},{"74":74,"78":78,"83":83,"96":96}],71:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -19941,7 +19973,7 @@ _component2['default'].registerComponent('TextTrackSettings', TextTrackSettings)
 
 exports['default'] = TextTrackSettings;
 
-},{"5":5,"81":81,"83":83,"86":86,"88":88,"95":95}],72:[function(_dereq_,module,exports){
+},{"5":5,"81":81,"83":83,"86":86,"88":88,"97":97}],72:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -19960,7 +19992,7 @@ var _log = _dereq_(86);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -19970,7 +20002,7 @@ var _track2 = _interopRequireDefault(_track);
 
 var _url = _dereq_(92);
 
-var _xhr = _dereq_(99);
+var _xhr = _dereq_(109);
 
 var _xhr2 = _interopRequireDefault(_xhr);
 
@@ -20392,7 +20424,7 @@ TextTrack.prototype.allowedEvents_ = {
 
 exports['default'] = TextTrack;
 
-},{"67":67,"73":73,"75":75,"78":78,"83":83,"86":86,"87":87,"92":92,"95":95,"99":99}],73:[function(_dereq_,module,exports){
+},{"109":109,"67":67,"73":73,"75":75,"78":78,"83":83,"86":86,"87":87,"92":92,"97":97}],73:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -20473,7 +20505,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -20695,7 +20727,7 @@ for (var event in TrackList.prototype.allowedEvents_) {
 
 exports['default'] = TrackList;
 
-},{"42":42,"78":78,"94":94}],75:[function(_dereq_,module,exports){
+},{"42":42,"78":78,"96":96}],75:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -20704,7 +20736,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -20839,7 +20871,7 @@ var Track = function (_EventTarget) {
 
 exports['default'] = Track;
 
-},{"42":42,"78":78,"85":85,"94":94}],76:[function(_dereq_,module,exports){
+},{"42":42,"78":78,"85":85,"96":96}],76:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -20852,7 +20884,7 @@ var _browser = _dereq_(78);
 
 var browser = _interopRequireWildcard(_browser);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -21034,7 +21066,7 @@ var VideoTrackList = function (_TrackList) {
 
 exports['default'] = VideoTrackList;
 
-},{"74":74,"78":78,"94":94}],77:[function(_dereq_,module,exports){
+},{"74":74,"78":78,"96":96}],77:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -21174,7 +21206,7 @@ var _dom = _dereq_(81);
 
 var Dom = _interopRequireWildcard(_dom);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -21255,7 +21287,7 @@ var TOUCH_ENABLED = exports.TOUCH_ENABLED = Dom.isReal() && ('ontouchstart' in _
 
 var BACKGROUND_SIZE_SUPPORTED = exports.BACKGROUND_SIZE_SUPPORTED = Dom.isReal() && 'backgroundSize' in _window2['default'].document.createElement('video').style;
 
-},{"81":81,"95":95}],79:[function(_dereq_,module,exports){
+},{"81":81,"97":97}],79:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -21312,7 +21344,7 @@ function bufferedPercent(buffered, duration) {
 exports.__esModule = true;
 exports['default'] = computedStyle;
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -21350,7 +21382,7 @@ function computedStyle(el, prop) {
    * @module computed-style
    */
 
-},{"95":95}],81:[function(_dereq_,module,exports){
+},{"97":97}],81:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -21386,11 +21418,11 @@ exports.normalizeContent = normalizeContent;
 exports.appendContent = appendContent;
 exports.insertContent = insertContent;
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -21402,7 +21434,7 @@ var _log = _dereq_(86);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _tsml = _dereq_(98);
+var _tsml = _dereq_(102);
 
 var _tsml2 = _interopRequireDefault(_tsml);
 
@@ -22249,7 +22281,7 @@ var $ = exports.$ = createQuerier('querySelector');
  */
 var $$ = exports.$$ = createQuerier('querySelectorAll');
 
-},{"85":85,"86":86,"88":88,"94":94,"95":95,"98":98}],82:[function(_dereq_,module,exports){
+},{"102":102,"85":85,"86":86,"88":88,"96":96,"97":97}],82:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -22271,11 +22303,11 @@ var _log = _dereq_(86);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -22708,7 +22740,7 @@ function one(elem, type, fn) {
   on(elem, type, func);
 }
 
-},{"81":81,"85":85,"86":86,"94":94,"95":95}],83:[function(_dereq_,module,exports){
+},{"81":81,"85":85,"86":86,"96":96,"97":97}],83:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -22871,7 +22903,7 @@ function newGUID() {
 exports.__esModule = true;
 exports.logByType = undefined;
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -23007,7 +23039,7 @@ log.warn = function () {
 
 exports['default'] = log;
 
-},{"78":78,"88":88,"95":95}],87:[function(_dereq_,module,exports){
+},{"78":78,"88":88,"97":97}],87:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -23217,7 +23249,7 @@ function isPlain(value) {
 exports.__esModule = true;
 exports.setTextContent = exports.createStyleElement = undefined;
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -23261,7 +23293,7 @@ var setTextContent = exports.setTextContent = function setTextContent(el, conten
   }
 };
 
-},{"94":94}],90:[function(_dereq_,module,exports){
+},{"96":96}],90:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -23442,11 +23474,11 @@ exports['default'] = toTitleCase;
 exports.__esModule = true;
 exports.isCrossOrigin = exports.getFileExtension = exports.getAbsoluteURL = exports.parseUrl = undefined;
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -23611,7 +23643,7 @@ var isCrossOrigin = exports.isCrossOrigin = function isCrossOrigin(url) {
   return crossOrigin;
 };
 
-},{"94":94,"95":95}],93:[function(_dereq_,module,exports){
+},{"96":96,"97":97}],93:[function(_dereq_,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -23626,11 +23658,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // Include the built-in techs
 
 
-var _window = _dereq_(95);
+var _window = _dereq_(97);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(94);
+var _document = _dereq_(96);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -23714,7 +23746,7 @@ var _extend = _dereq_(43);
 
 var _extend2 = _interopRequireDefault(_extend);
 
-var _xhr = _dereq_(99);
+var _xhr = _dereq_(109);
 
 var _xhr2 = _interopRequireDefault(_xhr);
 
@@ -24334,333 +24366,10 @@ if (typeof define === 'function' && define.amd) {
 
 exports['default'] = videojs;
 
-},{"42":42,"43":43,"5":5,"51":51,"52":52,"56":56,"62":62,"64":64,"72":72,"77":77,"78":78,"80":80,"81":81,"82":82,"83":83,"84":84,"86":86,"87":87,"88":88,"89":89,"90":90,"92":92,"94":94,"95":95,"99":99}],94:[function(_dereq_,module,exports){
-(function (global){
-var topLevel = typeof global !== 'undefined' ? global :
-    typeof window !== 'undefined' ? window : {}
-var minDoc = _dereq_(96);
+},{"109":109,"42":42,"43":43,"5":5,"51":51,"52":52,"56":56,"62":62,"64":64,"72":72,"77":77,"78":78,"80":80,"81":81,"82":82,"83":83,"84":84,"86":86,"87":87,"88":88,"89":89,"90":90,"92":92,"96":96,"97":97}],94:[function(_dereq_,module,exports){
 
-if (typeof document !== 'undefined') {
-    module.exports = document;
-} else {
-    var doccy = topLevel['__GLOBAL_DOCUMENT_CACHE@4'];
-
-    if (!doccy) {
-        doccy = topLevel['__GLOBAL_DOCUMENT_CACHE@4'] = minDoc;
-    }
-
-    module.exports = doccy;
-}
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"96":96}],95:[function(_dereq_,module,exports){
-(function (global){
-if (typeof window !== "undefined") {
-    module.exports = window;
-} else if (typeof global !== "undefined") {
-    module.exports = global;
-} else if (typeof self !== "undefined"){
-    module.exports = self;
-} else {
-    module.exports = {};
-}
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],96:[function(_dereq_,module,exports){
-
-},{}],97:[function(_dereq_,module,exports){
-module.exports = SafeParseTuple
-
-function SafeParseTuple(obj, reviver) {
-    var json
-    var error = null
-
-    try {
-        json = JSON.parse(obj, reviver)
-    } catch (err) {
-        error = err
-    }
-
-    return [error, json]
-}
-
-},{}],98:[function(_dereq_,module,exports){
-function clean (s) {
-  return s.replace(/\n\r?\s*/g, '')
-}
-
-
-module.exports = function tsml (sa) {
-  var s = ''
-    , i = 0
-
-  for (; i < arguments.length; i++)
-    s += clean(sa[i]) + (arguments[i + 1] || '')
-
-  return s
-}
-},{}],99:[function(_dereq_,module,exports){
-"use strict";
-var window = _dereq_(95)
-var isFunction = _dereq_(100)
-var parseHeaders = _dereq_(103)
-var xtend = _dereq_(104)
-
-module.exports = createXHR
-createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
-createXHR.XDomainRequest = "withCredentials" in (new createXHR.XMLHttpRequest()) ? createXHR.XMLHttpRequest : window.XDomainRequest
-
-forEachArray(["get", "put", "post", "patch", "head", "delete"], function(method) {
-    createXHR[method === "delete" ? "del" : method] = function(uri, options, callback) {
-        options = initParams(uri, options, callback)
-        options.method = method.toUpperCase()
-        return _createXHR(options)
-    }
-})
-
-function forEachArray(array, iterator) {
-    for (var i = 0; i < array.length; i++) {
-        iterator(array[i])
-    }
-}
-
-function isEmpty(obj){
-    for(var i in obj){
-        if(obj.hasOwnProperty(i)) return false
-    }
-    return true
-}
-
-function initParams(uri, options, callback) {
-    var params = uri
-
-    if (isFunction(options)) {
-        callback = options
-        if (typeof uri === "string") {
-            params = {uri:uri}
-        }
-    } else {
-        params = xtend(options, {uri: uri})
-    }
-
-    params.callback = callback
-    return params
-}
-
-function createXHR(uri, options, callback) {
-    options = initParams(uri, options, callback)
-    return _createXHR(options)
-}
-
-function _createXHR(options) {
-    if(typeof options.callback === "undefined"){
-        throw new Error("callback argument missing")
-    }
-
-    var called = false
-    var callback = function cbOnce(err, response, body){
-        if(!called){
-            called = true
-            options.callback(err, response, body)
-        }
-    }
-
-    function readystatechange() {
-        if (xhr.readyState === 4) {
-            setTimeout(loadFunc, 0)
-        }
-    }
-
-    function getBody() {
-        // Chrome with requestType=blob throws errors arround when even testing access to responseText
-        var body = undefined
-
-        if (xhr.response) {
-            body = xhr.response
-        } else {
-            body = xhr.responseText || getXml(xhr)
-        }
-
-        if (isJson) {
-            try {
-                body = JSON.parse(body)
-            } catch (e) {}
-        }
-
-        return body
-    }
-
-    function errorFunc(evt) {
-        clearTimeout(timeoutTimer)
-        if(!(evt instanceof Error)){
-            evt = new Error("" + (evt || "Unknown XMLHttpRequest Error") )
-        }
-        evt.statusCode = 0
-        return callback(evt, failureResponse)
-    }
-
-    // will load the data & process the response in a special response object
-    function loadFunc() {
-        if (aborted) return
-        var status
-        clearTimeout(timeoutTimer)
-        if(options.useXDR && xhr.status===undefined) {
-            //IE8 CORS GET successful response doesn't have a status field, but body is fine
-            status = 200
-        } else {
-            status = (xhr.status === 1223 ? 204 : xhr.status)
-        }
-        var response = failureResponse
-        var err = null
-
-        if (status !== 0){
-            response = {
-                body: getBody(),
-                statusCode: status,
-                method: method,
-                headers: {},
-                url: uri,
-                rawRequest: xhr
-            }
-            if(xhr.getAllResponseHeaders){ //remember xhr can in fact be XDR for CORS in IE
-                response.headers = parseHeaders(xhr.getAllResponseHeaders())
-            }
-        } else {
-            err = new Error("Internal XMLHttpRequest Error")
-        }
-        return callback(err, response, response.body)
-    }
-
-    var xhr = options.xhr || null
-
-    if (!xhr) {
-        if (options.cors || options.useXDR) {
-            xhr = new createXHR.XDomainRequest()
-        }else{
-            xhr = new createXHR.XMLHttpRequest()
-        }
-    }
-
-    var key
-    var aborted
-    var uri = xhr.url = options.uri || options.url
-    var method = xhr.method = options.method || "GET"
-    var body = options.body || options.data
-    var headers = xhr.headers = options.headers || {}
-    var sync = !!options.sync
-    var isJson = false
-    var timeoutTimer
-    var failureResponse = {
-        body: undefined,
-        headers: {},
-        statusCode: 0,
-        method: method,
-        url: uri,
-        rawRequest: xhr
-    }
-
-    if ("json" in options && options.json !== false) {
-        isJson = true
-        headers["accept"] || headers["Accept"] || (headers["Accept"] = "application/json") //Don't override existing accept header declared by user
-        if (method !== "GET" && method !== "HEAD") {
-            headers["content-type"] || headers["Content-Type"] || (headers["Content-Type"] = "application/json") //Don't override existing accept header declared by user
-            body = JSON.stringify(options.json === true ? body : options.json)
-        }
-    }
-
-    xhr.onreadystatechange = readystatechange
-    xhr.onload = loadFunc
-    xhr.onerror = errorFunc
-    // IE9 must have onprogress be set to a unique function.
-    xhr.onprogress = function () {
-        // IE must die
-    }
-    xhr.onabort = function(){
-        aborted = true;
-    }
-    xhr.ontimeout = errorFunc
-    xhr.open(method, uri, !sync, options.username, options.password)
-    //has to be after open
-    if(!sync) {
-        xhr.withCredentials = !!options.withCredentials
-    }
-    // Cannot set timeout with sync request
-    // not setting timeout on the xhr object, because of old webkits etc. not handling that correctly
-    // both npm's request and jquery 1.x use this kind of timeout, so this is being consistent
-    if (!sync && options.timeout > 0 ) {
-        timeoutTimer = setTimeout(function(){
-            if (aborted) return
-            aborted = true//IE9 may still call readystatechange
-            xhr.abort("timeout")
-            var e = new Error("XMLHttpRequest timeout")
-            e.code = "ETIMEDOUT"
-            errorFunc(e)
-        }, options.timeout )
-    }
-
-    if (xhr.setRequestHeader) {
-        for(key in headers){
-            if(headers.hasOwnProperty(key)){
-                xhr.setRequestHeader(key, headers[key])
-            }
-        }
-    } else if (options.headers && !isEmpty(options.headers)) {
-        throw new Error("Headers cannot be set on an XDomainRequest object")
-    }
-
-    if ("responseType" in options) {
-        xhr.responseType = options.responseType
-    }
-
-    if ("beforeSend" in options &&
-        typeof options.beforeSend === "function"
-    ) {
-        options.beforeSend(xhr)
-    }
-
-    // Microsoft Edge browser sends "undefined" when send is called with undefined value.
-    // XMLHttpRequest spec says to pass null as body to indicate no body
-    // See https://github.com/naugtur/xhr/issues/100.
-    xhr.send(body || null)
-
-    return xhr
-
-
-}
-
-function getXml(xhr) {
-    if (xhr.responseType === "document") {
-        return xhr.responseXML
-    }
-    var firefoxBugTakenEffect = xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
-    if (xhr.responseType === "" && !firefoxBugTakenEffect) {
-        return xhr.responseXML
-    }
-
-    return null
-}
-
-function noop() {}
-
-},{"100":100,"103":103,"104":104,"95":95}],100:[function(_dereq_,module,exports){
-module.exports = isFunction
-
-var toString = Object.prototype.toString
-
-function isFunction (fn) {
-  var string = toString.call(fn)
-  return string === '[object Function]' ||
-    (typeof fn === 'function' && string !== '[object RegExp]') ||
-    (typeof window !== 'undefined' &&
-     // IE8 and below
-     (fn === window.setTimeout ||
-      fn === window.alert ||
-      fn === window.confirm ||
-      fn === window.prompt))
-};
-
-},{}],101:[function(_dereq_,module,exports){
-var isFunction = _dereq_(100)
+},{}],95:[function(_dereq_,module,exports){
+var isFunction = _dereq_(98)
 
 module.exports = forEach
 
@@ -24707,25 +24416,58 @@ function forEachObject(object, iterator, context) {
     }
 }
 
-},{"100":100}],102:[function(_dereq_,module,exports){
+},{"98":98}],96:[function(_dereq_,module,exports){
+(function (global){
+var topLevel = typeof global !== 'undefined' ? global :
+    typeof window !== 'undefined' ? window : {}
+var minDoc = _dereq_(94);
 
-exports = module.exports = trim;
+if (typeof document !== 'undefined') {
+    module.exports = document;
+} else {
+    var doccy = topLevel['__GLOBAL_DOCUMENT_CACHE@4'];
 
-function trim(str){
-  return str.replace(/^\s*|\s*$/g, '');
+    if (!doccy) {
+        doccy = topLevel['__GLOBAL_DOCUMENT_CACHE@4'] = minDoc;
+    }
+
+    module.exports = doccy;
 }
 
-exports.left = function(str){
-  return str.replace(/^\s*/, '');
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"94":94}],97:[function(_dereq_,module,exports){
+(function (global){
+if (typeof window !== "undefined") {
+    module.exports = window;
+} else if (typeof global !== "undefined") {
+    module.exports = global;
+} else if (typeof self !== "undefined"){
+    module.exports = self;
+} else {
+    module.exports = {};
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],98:[function(_dereq_,module,exports){
+module.exports = isFunction
+
+var toString = Object.prototype.toString
+
+function isFunction (fn) {
+  var string = toString.call(fn)
+  return string === '[object Function]' ||
+    (typeof fn === 'function' && string !== '[object RegExp]') ||
+    (typeof window !== 'undefined' &&
+     // IE8 and below
+     (fn === window.setTimeout ||
+      fn === window.alert ||
+      fn === window.confirm ||
+      fn === window.prompt))
 };
 
-exports.right = function(str){
-  return str.replace(/\s*$/, '');
-};
-
-},{}],103:[function(_dereq_,module,exports){
-var trim = _dereq_(102)
-  , forEach = _dereq_(101)
+},{}],99:[function(_dereq_,module,exports){
+var trim = _dereq_(101)
+  , forEach = _dereq_(95)
   , isArray = function(arg) {
       return Object.prototype.toString.call(arg) === '[object Array]';
     }
@@ -24755,28 +24497,54 @@ module.exports = function (headers) {
 
   return result
 }
-},{"101":101,"102":102}],104:[function(_dereq_,module,exports){
-module.exports = extend
+},{"101":101,"95":95}],100:[function(_dereq_,module,exports){
+module.exports = SafeParseTuple
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+function SafeParseTuple(obj, reviver) {
+    var json
+    var error = null
 
-function extend() {
-    var target = {}
-
-    for (var i = 0; i < arguments.length; i++) {
-        var source = arguments[i]
-
-        for (var key in source) {
-            if (hasOwnProperty.call(source, key)) {
-                target[key] = source[key]
-            }
-        }
+    try {
+        json = JSON.parse(obj, reviver)
+    } catch (err) {
+        error = err
     }
 
-    return target
+    return [error, json]
 }
 
-},{}],105:[function(_dereq_,module,exports){
+},{}],101:[function(_dereq_,module,exports){
+
+exports = module.exports = trim;
+
+function trim(str){
+  return str.replace(/^\s*|\s*$/g, '');
+}
+
+exports.left = function(str){
+  return str.replace(/^\s*/, '');
+};
+
+exports.right = function(str){
+  return str.replace(/\s*$/, '');
+};
+
+},{}],102:[function(_dereq_,module,exports){
+function clean (s) {
+  return s.replace(/\n\r?\s*/g, '')
+}
+
+
+module.exports = function tsml (sa) {
+  var s = ''
+    , i = 0
+
+  for (; i < arguments.length; i++)
+    s += clean(sa[i]) + (arguments[i + 1] || '')
+
+  return s
+}
+},{}],103:[function(_dereq_,module,exports){
 /**
  * Copyright 2013 vtt.js Contributors
  *
@@ -24798,9 +24566,9 @@ function extend() {
 // forth between JSON. If we don't then it's not that big of a deal since we're
 // off browser.
 var vttjs = module.exports = {
-  WebVTT: _dereq_(106).WebVTT,
-  VTTCue: _dereq_(107).VTTCue,
-  VTTRegion: _dereq_(109).VTTRegion
+  WebVTT: _dereq_(104).WebVTT,
+  VTTCue: _dereq_(105).VTTCue,
+  VTTRegion: _dereq_(107).VTTRegion
 };
 
 window.vttjs = vttjs;
@@ -24825,7 +24593,7 @@ if (!window.VTTCue) {
   vttjs.shim();
 }
 
-},{"106":106,"107":107,"109":109}],106:[function(_dereq_,module,exports){
+},{"104":104,"105":105,"107":107}],104:[function(_dereq_,module,exports){
 /**
  * Copyright 2013 vtt.js Contributors
  *
@@ -26161,7 +25929,7 @@ if (!window.VTTCue) {
 
 }(this, (this.vttjs || {})));
 
-},{}],107:[function(_dereq_,module,exports){
+},{}],105:[function(_dereq_,module,exports){
 /**
  * Copyright 2013 vtt.js Contributors
  *
@@ -26181,7 +25949,7 @@ if (!window.VTTCue) {
 // If we're in Node.js then require VTTCue so we can extend it, otherwise assume
 // VTTCue is on the global.
 if (typeof module !== "undefined" && module.exports) {
-  this.VTTCue = this.VTTCue || _dereq_(108).VTTCue;
+  this.VTTCue = this.VTTCue || _dereq_(106).VTTCue;
 }
 
 // Extend VTTCue with methods to convert to JSON, from JSON, and construct a
@@ -26223,7 +25991,7 @@ if (typeof module !== "undefined" && module.exports) {
 
 }(this));
 
-},{"108":108}],108:[function(_dereq_,module,exports){
+},{"106":106}],106:[function(_dereq_,module,exports){
 /**
  * Copyright 2013 vtt.js Contributors
  *
@@ -26534,7 +26302,7 @@ if (typeof module !== "undefined" && module.exports) {
   vttjs.VTTCue = VTTCue;
 }(this, (this.vttjs || {})));
 
-},{}],109:[function(_dereq_,module,exports){
+},{}],107:[function(_dereq_,module,exports){
 /**
  * Copyright 2013 vtt.js Contributors
  *
@@ -26554,7 +26322,7 @@ if (typeof module !== "undefined" && module.exports) {
 // If we're in Node.js then require VTTRegion so we can extend it, otherwise assume
 // VTTRegion is on the global.
 if (typeof module !== "undefined" && module.exports) {
-  this.VTTRegion = _dereq_(110).VTTRegion;
+  this.VTTRegion = _dereq_(108).VTTRegion;
 }
 
 // Extend VTTRegion with methods to convert to JSON, from JSON, and construct a
@@ -26579,7 +26347,7 @@ if (typeof module !== "undefined" && module.exports) {
 
 }(this));
 
-},{"110":110}],110:[function(_dereq_,module,exports){
+},{"108":108}],108:[function(_dereq_,module,exports){
 /**
  * Copyright 2013 vtt.js Contributors
  *
@@ -26718,6 +26486,264 @@ if (typeof module !== "undefined" && module.exports) {
   root.VTTRegion = root.VTTRegion || VTTRegion;
   vttjs.VTTRegion = VTTRegion;
 }(this, (this.vttjs || {})));
+
+},{}],109:[function(_dereq_,module,exports){
+"use strict";
+var window = _dereq_(97)
+var isFunction = _dereq_(98)
+var parseHeaders = _dereq_(99)
+var xtend = _dereq_(110)
+
+module.exports = createXHR
+createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
+createXHR.XDomainRequest = "withCredentials" in (new createXHR.XMLHttpRequest()) ? createXHR.XMLHttpRequest : window.XDomainRequest
+
+forEachArray(["get", "put", "post", "patch", "head", "delete"], function(method) {
+    createXHR[method === "delete" ? "del" : method] = function(uri, options, callback) {
+        options = initParams(uri, options, callback)
+        options.method = method.toUpperCase()
+        return _createXHR(options)
+    }
+})
+
+function forEachArray(array, iterator) {
+    for (var i = 0; i < array.length; i++) {
+        iterator(array[i])
+    }
+}
+
+function isEmpty(obj){
+    for(var i in obj){
+        if(obj.hasOwnProperty(i)) return false
+    }
+    return true
+}
+
+function initParams(uri, options, callback) {
+    var params = uri
+
+    if (isFunction(options)) {
+        callback = options
+        if (typeof uri === "string") {
+            params = {uri:uri}
+        }
+    } else {
+        params = xtend(options, {uri: uri})
+    }
+
+    params.callback = callback
+    return params
+}
+
+function createXHR(uri, options, callback) {
+    options = initParams(uri, options, callback)
+    return _createXHR(options)
+}
+
+function _createXHR(options) {
+    if(typeof options.callback === "undefined"){
+        throw new Error("callback argument missing")
+    }
+
+    var called = false
+    var callback = function cbOnce(err, response, body){
+        if(!called){
+            called = true
+            options.callback(err, response, body)
+        }
+    }
+
+    function readystatechange() {
+        if (xhr.readyState === 4) {
+            loadFunc()
+        }
+    }
+
+    function getBody() {
+        // Chrome with requestType=blob throws errors arround when even testing access to responseText
+        var body = undefined
+
+        if (xhr.response) {
+            body = xhr.response
+        } else {
+            body = xhr.responseText || getXml(xhr)
+        }
+
+        if (isJson) {
+            try {
+                body = JSON.parse(body)
+            } catch (e) {}
+        }
+
+        return body
+    }
+
+    var failureResponse = {
+                body: undefined,
+                headers: {},
+                statusCode: 0,
+                method: method,
+                url: uri,
+                rawRequest: xhr
+            }
+
+    function errorFunc(evt) {
+        clearTimeout(timeoutTimer)
+        if(!(evt instanceof Error)){
+            evt = new Error("" + (evt || "Unknown XMLHttpRequest Error") )
+        }
+        evt.statusCode = 0
+        return callback(evt, failureResponse)
+    }
+
+    // will load the data & process the response in a special response object
+    function loadFunc() {
+        if (aborted) return
+        var status
+        clearTimeout(timeoutTimer)
+        if(options.useXDR && xhr.status===undefined) {
+            //IE8 CORS GET successful response doesn't have a status field, but body is fine
+            status = 200
+        } else {
+            status = (xhr.status === 1223 ? 204 : xhr.status)
+        }
+        var response = failureResponse
+        var err = null
+
+        if (status !== 0){
+            response = {
+                body: getBody(),
+                statusCode: status,
+                method: method,
+                headers: {},
+                url: uri,
+                rawRequest: xhr
+            }
+            if(xhr.getAllResponseHeaders){ //remember xhr can in fact be XDR for CORS in IE
+                response.headers = parseHeaders(xhr.getAllResponseHeaders())
+            }
+        } else {
+            err = new Error("Internal XMLHttpRequest Error")
+        }
+        return callback(err, response, response.body)
+    }
+
+    var xhr = options.xhr || null
+
+    if (!xhr) {
+        if (options.cors || options.useXDR) {
+            xhr = new createXHR.XDomainRequest()
+        }else{
+            xhr = new createXHR.XMLHttpRequest()
+        }
+    }
+
+    var key
+    var aborted
+    var uri = xhr.url = options.uri || options.url
+    var method = xhr.method = options.method || "GET"
+    var body = options.body || options.data || null
+    var headers = xhr.headers = options.headers || {}
+    var sync = !!options.sync
+    var isJson = false
+    var timeoutTimer
+
+    if ("json" in options) {
+        isJson = true
+        headers["accept"] || headers["Accept"] || (headers["Accept"] = "application/json") //Don't override existing accept header declared by user
+        if (method !== "GET" && method !== "HEAD") {
+            headers["content-type"] || headers["Content-Type"] || (headers["Content-Type"] = "application/json") //Don't override existing accept header declared by user
+            body = JSON.stringify(options.json)
+        }
+    }
+
+    xhr.onreadystatechange = readystatechange
+    xhr.onload = loadFunc
+    xhr.onerror = errorFunc
+    // IE9 must have onprogress be set to a unique function.
+    xhr.onprogress = function () {
+        // IE must die
+    }
+    xhr.ontimeout = errorFunc
+    xhr.open(method, uri, !sync, options.username, options.password)
+    //has to be after open
+    if(!sync) {
+        xhr.withCredentials = !!options.withCredentials
+    }
+    // Cannot set timeout with sync request
+    // not setting timeout on the xhr object, because of old webkits etc. not handling that correctly
+    // both npm's request and jquery 1.x use this kind of timeout, so this is being consistent
+    if (!sync && options.timeout > 0 ) {
+        timeoutTimer = setTimeout(function(){
+            aborted=true//IE9 may still call readystatechange
+            xhr.abort("timeout")
+            var e = new Error("XMLHttpRequest timeout")
+            e.code = "ETIMEDOUT"
+            errorFunc(e)
+        }, options.timeout )
+    }
+
+    if (xhr.setRequestHeader) {
+        for(key in headers){
+            if(headers.hasOwnProperty(key)){
+                xhr.setRequestHeader(key, headers[key])
+            }
+        }
+    } else if (options.headers && !isEmpty(options.headers)) {
+        throw new Error("Headers cannot be set on an XDomainRequest object")
+    }
+
+    if ("responseType" in options) {
+        xhr.responseType = options.responseType
+    }
+
+    if ("beforeSend" in options &&
+        typeof options.beforeSend === "function"
+    ) {
+        options.beforeSend(xhr)
+    }
+
+    xhr.send(body)
+
+    return xhr
+
+
+}
+
+function getXml(xhr) {
+    if (xhr.responseType === "document") {
+        return xhr.responseXML
+    }
+    var firefoxBugTakenEffect = xhr.status === 204 && xhr.responseXML && xhr.responseXML.documentElement.nodeName === "parsererror"
+    if (xhr.responseType === "" && !firefoxBugTakenEffect) {
+        return xhr.responseXML
+    }
+
+    return null
+}
+
+function noop() {}
+
+},{"110":110,"97":97,"98":98,"99":99}],110:[function(_dereq_,module,exports){
+module.exports = extend
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+function extend() {
+    var target = {}
+
+    for (var i = 0; i < arguments.length; i++) {
+        var source = arguments[i]
+
+        for (var key in source) {
+            if (hasOwnProperty.call(source, key)) {
+                target[key] = source[key]
+            }
+        }
+    }
+
+    return target
+}
 
 },{}]},{},[93])(93)
 });

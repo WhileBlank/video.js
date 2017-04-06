@@ -148,6 +148,29 @@ class Flash extends Tech {
   }
 
   /**
+   * WhileBlank
+   */
+  stretching(val) {
+    if (val === undefined) {
+      return this.currentStretching();
+    }
+
+    // Setting src through `val` not `setStretching` will be deprecated
+    return this.setStretching(val);
+  }
+
+  currentStretching() {
+    if (this.currentSource_) {
+      return this.currentSource_.stretching;
+    }
+    return this.el_.vjs_getProperty('stretching');
+  }
+
+  setStretching(val) {
+    this.el_.vjs_setProperty('stretching', val);
+  }
+
+  /**
    * A getter/setter for the `Flash` Tech's source object.
    * > Note: Please use {@link Flash#setSource}
    *
